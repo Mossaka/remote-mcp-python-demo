@@ -1,0 +1,80 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "MCP Todo Server",
+        "description": "Python-based MCP server for todo management",
+        "version": "1.0"
+    },
+    "servers": [{
+        "url": "https://apim-rocks.azure-api.net/mcp-todo"
+    }],
+    "paths": {
+        "/mcp": {
+            "post": {
+                "tags": ["MCP"],
+                "summary": "MCP StreamableHTTP endpoint",
+                "description": "Handle MCP protocol messages via HTTP",
+                "operationId": "mcp",
+                "parameters": [{
+                    "name": "Content-Type",
+                    "in": "header",
+                    "required": true,
+                    "schema": {
+                        "enum": ["application/json"],
+                        "type": "string"
+                    }
+                }],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "jsonrpc": {
+                                        "type": "string",
+                                        "example": "2.0"
+                                    },
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "method": {
+                                        "type": "string",
+                                        "example": "tools/list"
+                                    },
+                                    "params": {
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "MCP protocol response"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "apiKeyHeader": {
+                "type": "apiKey",
+                "name": "api-key",
+                "in": "header"
+            },
+            "apiKeyQuery": {
+                "type": "apiKey",
+                "name": "api-key",
+                "in": "query"
+            }
+        }
+    },
+    "security": [{
+        "apiKeyHeader": []
+    }, {
+        "apiKeyQuery": []
+    }]
+}

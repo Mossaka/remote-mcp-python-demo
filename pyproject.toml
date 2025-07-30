@@ -1,0 +1,10 @@
+[project]
+name = "remote-mcp-demo-07-30"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "mcp[cli]>=1.12.2",
+    "pydantic>=2.11.7",
+]

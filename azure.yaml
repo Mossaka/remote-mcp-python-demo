@@ -1,0 +1,12 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
+
+name: mcp-container-py
+metadata:
+    template: mcp-container-py@0.1.0
+services:
+    mcp-container-py:
+        project: .
+        host: containerapp
+        language: py
+        docker:
+            path: Dockerfile
